@@ -28,25 +28,25 @@ class control extends CI_Controller{
  
 		$this->load->library('upload', $config);
  
-		if ( ! $this->upload->do_upload('berkas')){
+		if ( ! $this->upload->do_upload('foto_makanan')){
 			$error = array('error' => $this->upload->display_errors());
-			$this->load->view('tampil', $error);
+			
 		}else{
-			$data = array('upload_data' => $this->upload->data());
+			$foto = array('upload_data' => $this->upload->data());
 			// $this->load->view('v_upload_sukses', $data);
-		}
 
 		$nama = $this->input->post('nama_makanan');
 		$harga = $this->input->post('harga_makanan');
-		$foto = $this->upload->data();
  
 		$data = array(
 			'nama_makanan' => $nama,
 			'harga_makanan' => $harga,
-			'foto_makanan' => $foto["file_name"]
+			'foto_makanan' => $foto["upload_data"]["file_name"]
 			);
 		// print_r($foto);
+		
 		$this->model->input_data($data,'menumakanan');
-		redirect('index');
+		$this->load->view('tampil', $error);
+		}
 	}
 }
