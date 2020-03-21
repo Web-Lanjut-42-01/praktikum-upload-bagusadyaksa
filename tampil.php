@@ -4,7 +4,7 @@
 	<title></title>
 </head>
 <body>
-	<form action="<?php echo base_url().'control/tambah_aksi'; ?>" enctype="multipart/from-data" method="POST">
+	<form action="<?php echo base_url().'index.php/control/tambah_aksi'; ?>" enctype="multipart/from-data" method="POST">
 		<table>
 			<tr>
 				<td>Nama Makanan</td>
